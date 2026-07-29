@@ -295,8 +295,8 @@ export function ExpiryManagement({ currentUser, products, onProductsChange }: Ex
                             </div>
                         </CardHeader>
                         <CardContent className="p-0">
-                            <div className="overflow-hidden">
-                                <Table>
+                            <div className="overflow-x-auto w-full">
+                                <Table className="min-w-[800px]">
                                     <TableHeader>
                                         <TableRow>
                                             <TableHead className="w-[300px] border px-4 py-2 bg-gray-100 font-bold text-gray-700">Product Name</TableHead>

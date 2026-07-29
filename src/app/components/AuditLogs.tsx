@@ -138,8 +138,8 @@ export function AuditLogs({ currentUser }: AuditLogsProps) {
                         </div>
                     </CardHeader>
                     <CardContent className="p-0">
-                        <div className="min-h-[550px] overflow-hidden">
-                            <Table>
+                        <div className="min-h-[550px] overflow-x-auto w-full">
+                            <Table className="min-w-[800px]">
                                 <TableHeader className="bg-slate-50">
                                     <TableRow className="border-b border-gray-200">
                                         <TableHead className="w-[15%] font-black uppercase text-[10px] text-gray-500 py-4 pl-6">Staff Member</TableHead>

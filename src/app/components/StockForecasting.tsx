@@ -139,8 +139,8 @@ export function StockForecasting({ products, transactions }: StockForecastingPro
                         </div>
                     </CardHeader>
                     <CardContent className="p-0">
-                        <div className="overflow-hidden">
-                            <Table className="w-full table-fixed">
+                        <div className="overflow-x-auto w-full">
+                            <Table className="w-full min-w-[800px]">
                             <TableHeader>
                                 <TableRow className="bg-gray-100/50 border-b border-gray-200">
                                     <TableHead className="px-2 py-3 font-black text-gray-700 uppercase text-[9px] w-[20%]">Product Name</TableHead>

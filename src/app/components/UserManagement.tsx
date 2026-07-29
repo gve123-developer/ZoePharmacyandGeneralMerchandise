@@ -327,17 +327,18 @@ export function UserManagement({ currentUser }: UserManagementProps) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="text-xs">Username</TableHead>
-                    <TableHead className="text-xs">Full Name</TableHead>
-                    <TableHead className="text-xs">Email</TableHead>
-                    <TableHead className="text-xs">Last Login</TableHead>
-                    <TableHead className="text-xs">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
+              <div className="overflow-x-auto w-full">
+                <Table className="min-w-[600px]">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="text-xs">Username</TableHead>
+                      <TableHead className="text-xs">Full Name</TableHead>
+                      <TableHead className="text-xs">Email</TableHead>
+                      <TableHead className="text-xs">Last Login</TableHead>
+                      <TableHead className="text-xs">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
                   {users.map((user) => (
                     <TableRow key={user.id}>
                       <TableCell className="font-medium text-xs">
@@ -374,7 +375,8 @@ export function UserManagement({ currentUser }: UserManagementProps) {
                   ))}
                 </TableBody>
               </Table>
-            </CardContent>
+            </div>
+          </CardContent>
           </Card>
         </ErrorBoundary>
 

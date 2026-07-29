@@ -428,8 +428,8 @@ export function InventoryManagement({ currentUser, products, onProductsChange }:
               </div>
             </CardHeader>
             <CardContent>
-              <div className="overflow-hidden">
-                <Table>
+              <div className="overflow-x-auto w-full">
+                <Table className="min-w-[800px]">
                   <TableHeader>
                     <TableRow className="bg-gray-50 border-b border-gray-200">
                       <TableHead className="px-6 py-4 font-bold text-gray-700 uppercase text-xs tracking-wider border-r border-gray-200">Product Details</TableHead>

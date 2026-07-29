@@ -829,7 +829,8 @@ export function Reports({ currentUser }: ReportsProps) {
               <CardTitle>Top Selling Products</CardTitle>
             </CardHeader>
             <CardContent>
-              <Table>
+              <div className="overflow-x-auto w-full">
+                <Table className="min-w-[600px]">
                 <TableHeader>
                   <TableRow>
                     <TableHead className="border px-4 py-2 bg-gray-100 font-bold text-gray-700">Rank</TableHead>
@@ -860,7 +861,8 @@ export function Reports({ currentUser }: ReportsProps) {
                   )}
                 </TableBody>
               </Table>
-            </CardContent>
+            </div>
+          </CardContent>
           </Card>
         </ErrorBoundary>
       </div>

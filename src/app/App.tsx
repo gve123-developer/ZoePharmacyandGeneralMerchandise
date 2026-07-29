@@ -86,7 +86,6 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [poCurrentPage, setPoCurrentPage] = useState(1);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [isSystemError, setIsSystemError] = useState(false);
 
   // On larger screens, default sidebar to open
   useEffect(() => {
@@ -134,10 +133,16 @@ function App() {
 
         setProducts(productsData);
         setTransactions(transactionsData);
-        setIsSystemError(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsSystemError(true);
+        console.error("Error fetching data, falling back to cache:", error);
+        const cachedProducts = localStorage.getItem('cachedProducts');
+        const cachedTransactions = localStorage.getItem('cachedTransactions');
+        if (cachedProducts) {
+          setProducts(JSON.parse(cachedProducts));
+        }
+        if (cachedTransactions) {
+          setTransactions(JSON.parse(cachedTransactions));
+        }
       }
     };
 
@@ -308,26 +313,6 @@ function App() {
 
 
 
-  if (isSystemError) {
-    return (
-      <div className="h-screen bg-gray-50 flex items-center justify-center p-6 animate-in fade-in duration-500">
-        <NotFound
-          title="500 - System Error"
-          message={
-            <div className="flex flex-col items-center gap-4">
-              <span className="text-gray-600 font-medium">Connecting to database...</span>
-              <div className="flex items-center gap-1.5">
-                <div className="size-1.5 bg-red-600 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                <div className="size-1.5 bg-red-600 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                <div className="size-1.5 bg-red-600 rounded-full animate-bounce" />
-              </div>
-              <p className="text-xs text-gray-400 mt-2">The page will automatically reload once the connection is restored.</p>
-            </div>
-          }
-        />
-      </div>
-    );
-  }
 
   if (!currentUser) {
     return (
@@ -356,8 +341,8 @@ function App() {
                   <Menu className="size-6" />
                 </Button>
                 <div className="min-w-0">
-                  <h1 className="font-semibold text-xl text-gray-900 uppercase">Zoe Pharmacy & General Merchandise</h1>
-                  <p className="text-sm text-gray-500">Inventory & POS System</p>
+                  <h1 className="font-semibold text-xs sm:text-lg md:text-xl text-gray-900 uppercase truncate">Zoe Pharmacy & General Merchandise</h1>
+                  <p className="text-[10px] sm:text-xs md:text-sm text-gray-500">Inventory & POS System</p>
                 </div>
               </div>
               <div className="flex items-center gap-2 md:gap-4 shrink-0">
