@@ -35,6 +35,8 @@ export function Reports({ currentUser }: ReportsProps) {
 
   useEffect(() => {
     loadData();
+    const interval = setInterval(loadData, 5000); // Auto-refresh every 5 seconds
+    return () => clearInterval(interval);
   }, []);
 
   const loadData = async () => {

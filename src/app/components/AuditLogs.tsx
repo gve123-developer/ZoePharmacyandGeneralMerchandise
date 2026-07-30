@@ -36,6 +36,8 @@ export function AuditLogs({ currentUser }: AuditLogsProps) {
 
     useEffect(() => {
         fetchLogs();
+        const interval = setInterval(fetchLogs, 5000); // Auto-refresh every 5 seconds
+        return () => clearInterval(interval);
     }, []);
 
     // Reset to page 1 when filters change

@@ -65,6 +65,8 @@ export function TransactionHistory({ currentUser }: TransactionHistoryProps) {
 
   useEffect(() => {
     loadTransactions();
+    const interval = setInterval(loadTransactions, 5000); // Auto-refresh every 5 seconds
+    return () => clearInterval(interval);
   }, []);
 
   const loadTransactions = async () => {
